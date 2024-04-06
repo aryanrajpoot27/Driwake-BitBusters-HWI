@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Driwake Admin Panel</title>
+	
+	<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="/css/adminpanel.css">
+</head>
+<body>
+
+
+<div id="page_wrapper">
+  <div id="sidenav" class="sidenav">
+    <div class="sidenav_header">
+      <div class="logo_section">
+        
+        <h2><b>
+            Driwake
+        </b>
+        </h2>
+      </div>
+      
+      <a href="#" class="sidenav_link active">
+   <i class='bx bx-list-ul' ></i>
+        <h3>Home</h3>
+      </a>
+      
+      <a href="#" class="sidenav_link">
+      <i class='bx bxs-user'></i>
+        <h3>Profile</h3>
+      </a>
+      
+      <a href="#" class="sidenav_link">
+        <i class='bx bx-cog'></i>
+        <h3>Settings</h3>
+      </a>
+      
+
+    </div>
+    <div class="sidenav_footer">
+      <a class="sidenav_link" >
+        <i class='bx bx-log-out'></i>
+        <button class="logout-btn">Log Out</button>
+      </a>
+    </div>
+    
+      <button id="nav_collapse_btn">
+        <i class='bx bxs-chevrons-left'></i>
+      </button>
+    </div>
+  
+    
+  <main>
+    <header>
+      <div class="text">
+        <h2>DRIVER PANEL</h2> 
+        
+<h3>Hey Driver.. Welcome to the User Homepage.</h3>
+
+      </div>
+      <div>
+        <button id="theme_switch">
+          <i class='bx bx-sun'></i>
+        </button>
+      </div>
+    </header>
+    
+    
+  </main>
+  
+</div>
+
+ <script>
+let wholePage = document.getElementById('page_wrapper');
+let btn = document.getElementById('nav_collapse_btn');
+
+
+btn.addEventListener('click', collapse);
+
+function collapse() {
+  wholePage.classList.toggle('collapsed');
+  if(wholePage.classList.contains('collapsed')){
+    btn.innerHTML = "<i class='bx bxs-chevrons-right'></i>"; 
+  } else {
+    btn.innerHTML = "<i class='bx bxs-chevrons-left'></i>"; 
+  } 
+}
+
+  let darkMode = localStorage.getItem('dark_mode');
+var toggleBtn = document.querySelector('#theme_switch');
+
+const enableDarkMode = () => {
+  document.body.classList.add('dark_mode');
+  localStorage.setItem('darkMode', 'enabled');
+  console.log('enabled');
+}
+
+const disableDarkMode = () => {
+  document.body.classList.remove('dark_mode');
+  localStorage.setItem('darkMode', null);
+  console.log('null');
+}
+
+toggleBtn.addEventListener('click', ()=>{
+  darkMode = localStorage.getItem('darkMode');
+  
+  if(darkMode !== 'enabled'){
+    enableDarkMode();
+  } else {
+    disableDarkMode();
+  }
+})
+
+
+const logoutBtn = document.querySelector(".logout-btn")
+
+logoutBtn.addEventListener("click",() => {
+  window.location.replace("/")
+})
+
+ </script>
+</body>
+</html>
